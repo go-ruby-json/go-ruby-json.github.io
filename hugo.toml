@@ -1,0 +1,31 @@
+baseURL = "https://go-ruby-json.github.io/"
+title = "go-ruby-json"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Parser"
+  status = "ready"
+  blurb = "`JSON.parse(s)` parses JSON text into the Ruby value graph (Hash/Array/String/Integer/Float/true/false/nil), with `symbolize_names` to key hashes by Symbol, exactly as MRI's parser does."
+[[params.phases]]
+  name = "Generator"
+  status = "ready"
+  blurb = "`JSON.generate(v)` emits compact JSON and `JSON.pretty_generate(v)` the indented form, matching reference Ruby's spacing and escaping byte-for-byte."
+[[params.phases]]
+  name = "Nesting & limits"
+  status = "ready"
+  blurb = "Depth tracking that raises `JSON::NestingError` past the configured limit, mirroring MRI's recursion guard on both parse and generate."
+[[params.phases]]
+  name = "Error taxonomy"
+  status = "ready"
+  blurb = "The `JSON::ParserError` / `JSON::NestingError` / `JSON::GeneratorError` hierarchy, raised on the same inputs and with the same messages as reference Ruby."
+[[params.phases]]
+  name = "Number & string fidelity"
+  status = "ready"
+  blurb = "Integers, floats, and escapes (including `\\uXXXX` surrogate pairs) parsed and emitted exactly as MRI, including the float formatting edge cases."
+[[params.phases]]
+  name = "Differential oracle & coverage"
+  status = "ready"
+  blurb = "A wide corpus round-tripped here and by the system `ruby`/`json`, compared byte-for-byte; 100% coverage, gofmt + go vet clean, green across all six 64-bit Go arches and three OSes."
